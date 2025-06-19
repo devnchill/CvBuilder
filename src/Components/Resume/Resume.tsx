@@ -5,7 +5,7 @@ import EducationForm from "./Forms/EducationForm.tsx";
 
 export default function Resume(): ReactElement {
   return (
-    <>
+    <main className="resume">
       <PersonalForm />
       <ExpandableProps title="Education">
         <EducationForm />
@@ -13,6 +13,6 @@ export default function Resume(): ReactElement {
       <ExpandableProps title="Experience">
         <EducationForm />
       </ExpandableProps>
-    </>
+    </main>
   );
 }

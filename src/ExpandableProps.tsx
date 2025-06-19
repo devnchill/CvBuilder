@@ -44,7 +44,7 @@ export default function ExpandableProps({
   }
   return (
     <section className="section-wrapper">
-      <h2>{title.toUpperCase()} Details</h2>
+      <h3>{title.toUpperCase()} Details</h3>
       {content}
     </section>
   );
