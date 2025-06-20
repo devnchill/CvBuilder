@@ -2,6 +2,7 @@ import Preview from "./Components/Preview/Preview";
 import Resume from "./Components/Resume/Resume";
 import "./Styles/styles.css";
 import { useState } from "react";
+import type { IFormData } from "./Types/formData.types";
 
 export default function App(): React.ReactElement {
   const currDate = new Date().toISOString().split("T")[0];
@@ -22,13 +23,23 @@ export default function App(): React.ReactElement {
     description:
       "A junior software engineer using solidity to write smart contracts.",
   };
-  console.log(initialFormData.eduStartDate);
+
+  function handleInput(
+    key: keyof IFormData,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    setFormData((prev) => {
+      const newFormData = { ...prev };
+      newFormData[key] = e.target.value;
+      return newFormData;
+    });
+  }
 
   const [formData, setFormData] = useState(initialFormData);
 
   return (
     <>
-      <Resume formData={formData} setFormData={setFormData} />
+      <Resume formData={formData} handleInput={handleInput} />
       <Preview formData={formData} />
     </>
   );

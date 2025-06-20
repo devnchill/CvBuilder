@@ -2,16 +2,28 @@ import type { ReactElement } from "react";
 import PersonalForm from "./Forms/PersonalForm";
 import ExpandableProps from "../../ExpandableProps.tsx";
 import EducationForm from "./Forms/EducationForm.tsx";
+import type { IFormData } from "../../Types/formData.types";
 
-export default function Resume(): ReactElement {
+interface ResumeProps {
+  formData: IFormData;
+  handleInput: (
+    key: keyof IFormData,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
+}
+
+export default function Resume({
+  formData,
+  handleInput,
+}: ResumeProps): ReactElement {
   return (
     <main className="resume">
-      <PersonalForm />
+      <PersonalForm formData={formData} handleInput={handleInput} />
       <ExpandableProps title="Education">
-        <EducationForm />
+        <EducationForm formData={formData} handleInput={handleInput} />
       </ExpandableProps>
       <ExpandableProps title="Experience">
-        <EducationForm />
+        <EducationForm formData={formData} handleInput={handleInput} />
       </ExpandableProps>
     </main>
   );
