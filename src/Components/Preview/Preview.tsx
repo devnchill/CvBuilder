@@ -1,32 +1,41 @@
 import type { ReactElement } from "react";
+import type { IFormData } from "../../Types/formData.types";
 
-export default function Preview(): ReactElement {
+interface PreviewProps {
+  formData: IFormData;
+}
+
+export default function Preview({ formData }: PreviewProps): ReactElement {
   return (
     <aside className="preview">
       <div className="preview-personal">
-        <h1>Your Name</h1>
+        <h1>{formData.name}</h1>
         <div>
-          <p>your.email@example.com</p>
-          <p>+91 1234567890</p>
-          <p>Your Adress</p>
+          <p>{formData.email}</p>
+          <p>{formData.phoneNumber}</p>
+          <p>{formData.address}</p>
         </div>
       </div>
       <div className="preview-education">
         <h2>Education</h2>
         <div>
-          <p>school</p>
-          <p>degree</p>
-          <p>start-end-date</p>
-          <p>location</p>
+          <p>{formData.schoolName}</p>
+          <p>{formData.degree}</p>
+          <p>
+            {formData.eduStartDate} to {formData.eduEndDate}
+          </p>
+          <p>{formData.location}</p>
         </div>
       </div>
       <div className="preview-experience">
         <h2>Experience</h2>
         <div>
-          <p>position</p>
-          <p>company</p>
-          <p>start-end-date</p>
-          <p>description</p>
+          <p>{formData.position}</p>
+          <p>{formData.company}</p>
+          <p>
+            {formData.workStartDate} to {formData.workEndDate}
+          </p>
+          <p>{formData.description}</p>
         </div>
       </div>
     </aside>
